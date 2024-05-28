@@ -31,7 +31,7 @@ public class FileHandler {
     }
 
     public void delete(int lineNumber) throws Exception {
-        linesOfFile.remove(lineNumber);
+        linesOfFile.remove(lineNumber - 1);
     }
 
     public void forEachLine(BiConsumer<Integer, String> action) {

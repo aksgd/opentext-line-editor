@@ -1,5 +1,6 @@
 package org.example;
 
+import linereader.assignment.opentext.Driver;
 import linereader.assignment.opentext.FileHandler;
 
 import java.io.FileNotFoundException;
@@ -11,10 +12,7 @@ import java.io.FileNotFoundException;
 public class App 
 {
     public static void main( String[] args ) throws FileNotFoundException {
-        var fileHandler = new FileHandler(args[0]);
-        fileHandler.forEachLine((index, line) -> {
-            System.out.println(String.join(": ", String.valueOf(index), line));
-        });
-
+        var driver = new Driver(new FileHandler(args[0]));
+        driver.start();
     }
 }

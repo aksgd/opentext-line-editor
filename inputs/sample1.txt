@@ -2,7 +2,6 @@ Imagine that you are writing a piece of scientific software,
 and you need to calculate prime numbers up to a certain 
 limit—as we did in the previous chapter. You have
 a nice algorithm to calculate them, so you copy and paste 
-it to wherever you need. 
 One day, though, your friend, B. Riemann, gives you a better algorithm
  to calculate primes, which will save you a lot of time. 
 At this point, you need to go over your whole code base and replace the old code with the new one.
