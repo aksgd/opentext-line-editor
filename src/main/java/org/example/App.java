@@ -1,11 +1,8 @@
 package org.example;
 
-import java.io.BufferedReader;
-import java.io.File;
+import linereader.assignment.opentext.FileHandler;
+
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.LinkedList;
-import java.util.stream.Collectors;
 
 /**
  * Hello world!
@@ -14,15 +11,9 @@ import java.util.stream.Collectors;
 public class App 
 {
     public static void main( String[] args ) throws FileNotFoundException {
-        var file = new File(args[0]);
-        var br
-            = new BufferedReader(new FileReader(file));
-        var linesOfFile = new LinkedList<String>();
-        br.lines().forEach(line -> {
-            linesOfFile.add(line);
-        });
-        linesOfFile.forEach(line -> {
-            System.out.println(line);
+        var fileHandler = new FileHandler(args[0]);
+        fileHandler.forEachLine((index, line) -> {
+            System.out.println(String.join(": ", String.valueOf(index), line));
         });
 
     }
