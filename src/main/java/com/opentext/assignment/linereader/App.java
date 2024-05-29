@@ -12,12 +12,12 @@ import java.io.FileNotFoundException;
 public class App 
 {
     public static void main( String[] args )  {
-        Driver driver = null;
-        try {
-            driver = new Driver(new FileHandler(args[0]));
-            driver.start();
-        } catch (FileNotFoundException e) {
-            System.err.println("Invalid file path. Program exits now.");
+        if(args.length > 0) {
+            try {
+                new Driver(new FileHandler(args[0])).start();
+            } catch (FileNotFoundException e) {
+                System.err.println("Invalid file path. Program exits now.");
+            }
         }
 
     }
