@@ -95,6 +95,11 @@ public class Driver {
         displayPrompt();
     }
     private void insert(Integer lineNumber) {
+        //this if block was added to improve user experience. However, it leads to double handling of the same concern
+        if(!fileHandler.isValidLine(lineNumber)) {
+            System.out.println("Unable to locate the line number.");
+            return;
+        }
         System.out.println("Enter the content:");
         displayPrompt();
         try {

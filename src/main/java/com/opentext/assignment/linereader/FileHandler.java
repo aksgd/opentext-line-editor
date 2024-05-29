@@ -33,6 +33,10 @@ public class FileHandler {
         linesOfFile.remove(lineNumber - 1);
     }
 
+    public boolean isValidLine(int lineNumber) {
+        return lineNumber <= linesOfFile.size() + 1 && lineNumber > 0;
+    }
+
     public void forEachLine(BiConsumer<Integer, String> action) {
         var iterator = linesOfFile.iterator();
         int index = 0;
