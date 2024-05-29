@@ -1,11 +1,10 @@
-package linereader.assignment.opentext;
+package com.opentext.assignment.linereader;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.LinkedList;
 import java.util.function.BiConsumer;
-import java.util.function.Consumer;
 
 public class FileHandler {
 

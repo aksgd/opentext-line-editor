@@ -1,7 +1,7 @@
-package assignment.opentext;
+package com.opentext.assignment.linereader;
 
 import junit.framework.TestCase;
-import linereader.assignment.opentext.Input;
+import com.opentext.assignment.linereader.Input;
 
 public class InputTest extends TestCase {
 

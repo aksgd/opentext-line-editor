@@ -1,4 +1,4 @@
-package linereader.assignment.opentext;
+package com.opentext.assignment.linereader;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -55,6 +55,9 @@ public class Driver {
                     break;
                 case "quit":
                     stop = true;
+                    break;
+                default:
+                    System.out.println("Input not supported, please try one of the below.");
             }
 
         } while(!stop);

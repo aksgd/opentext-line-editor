@@ -1,4 +1,4 @@
-package linereader.assignment.opentext;
+package com.opentext.assignment.linereader;
 
 public class Input{
     private String flag;

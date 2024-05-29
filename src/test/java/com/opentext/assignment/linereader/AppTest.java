@@ -1,4 +1,4 @@
-package org.example;
+package com.opentext.assignment.linereader;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
