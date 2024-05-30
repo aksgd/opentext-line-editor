@@ -48,10 +48,10 @@ public class Driver {
                     display();
                     break;
                 case "del":
-                    delete(Integer.valueOf(input.getValueAsInteger()));
+                    delete(input.getValueAsInteger());
                     break;
                 case "ins":
-                    insert(Integer.valueOf(input.getValueAsInteger()));
+                    insert(input.getValueAsInteger());
                     break;
                 case "save":
                     save();
@@ -78,12 +78,12 @@ public class Driver {
     }
 
     private void delete(Integer lineNumber) {
-        try {
-            fileHandler.delete(lineNumber);
-            terminalHandler.printLine("Line deleted.");
-        } catch (Exception e) {
+        if(lineNumber == null || !fileHandler.isValidLine(lineNumber)) {
             terminalHandler.printLine("Unable to locate the line number.");
+            return;
         }
+        fileHandler.delete(lineNumber);
+        terminalHandler.printLine("Line deleted.");
     }
 
     private void displayPrompt(){
@@ -98,18 +98,13 @@ public class Driver {
         displayPrompt();
     }
     private void insert(Integer lineNumber) {
-        //this if block was added to improve user experience. However, it leads to double handling of the same concern
-        if(!fileHandler.isValidLine(lineNumber)) {
+        if(lineNumber == null || !fileHandler.isValidLine(lineNumber)) {
             terminalHandler.printLine("Unable to locate the line number.");
             return;
         }
         terminalHandler.printLine("Enter the content:");
         displayPrompt();
-        try {
-            fileHandler.insert(lineNumber,getInput());
-            terminalHandler.printLine("Line inserted");
-        } catch (Exception e) {
-            terminalHandler.printLine("Unable to locate the line number.");
-        }
+        fileHandler.insert(lineNumber,getInput());
+        terminalHandler.printLine("Line inserted");
     }
 }

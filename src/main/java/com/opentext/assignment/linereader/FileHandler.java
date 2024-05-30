@@ -25,11 +25,11 @@ public class FileHandler {
         Files.writeString(path,fileContent);
     }
 
-    public void insert(int lineNumber, String line) throws Exception{
+    public void insert(int lineNumber, String line){
         linesOfFile.add(lineNumber - 1, line);
     }
 
-    public void delete(int lineNumber) throws Exception {
+    public void delete(int lineNumber){
         linesOfFile.remove(lineNumber - 1);
     }
 

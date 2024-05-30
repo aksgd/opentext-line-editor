@@ -9,6 +9,9 @@ public class Input{
     }
 
     public Integer getValueAsInteger(){
+        if(value == null) {
+            return null;
+        }
         return Integer.valueOf(value.trim());
     }
 
