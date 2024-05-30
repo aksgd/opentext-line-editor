@@ -9,10 +9,13 @@ public class Input{
     }
 
     public Integer getValueAsInteger(){
-        if(value == null) {
-            return null;
+        Integer result = null;
+        if(value != null) {
+            try {
+                result = Integer.valueOf(value.trim());
+            } catch (Exception e) {}
         }
-        return Integer.valueOf(value.trim());
+        return result;
     }
 
     public Input(String userInput) {
