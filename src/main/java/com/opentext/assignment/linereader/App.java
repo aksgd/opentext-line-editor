@@ -1,8 +1,5 @@
 package com.opentext.assignment.linereader;
 
-import com.opentext.assignment.linereader.Driver;
-import com.opentext.assignment.linereader.FileHandler;
-
 import java.io.FileNotFoundException;
 
 /**
@@ -12,13 +9,16 @@ import java.io.FileNotFoundException;
 public class App 
 {
     public static void main( String[] args )  {
+        var terminalHandler = new TerminalHandler();
         if(args.length > 0) {
             try {
-                new Driver(new FileHandler(args[0])).start();
+                new Driver(new FileHandler(args[0]), terminalHandler).start();
             } catch (FileNotFoundException e) {
-                System.err.println("Invalid file path. Program exits now.");
+                terminalHandler.printError("Invalid file path. Program exits now.");
+                System.exit(1);
             }
+        } else {
+            terminalHandler.printLine("Missing file path. Program exits now");
         }
-
     }
 }

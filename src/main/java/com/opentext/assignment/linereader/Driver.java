@@ -5,22 +5,25 @@ import java.util.Scanner;
 
 public class Driver {
 
-    final private FileHandler fileHandler;
-    public Driver(FileHandler fileHandler) {
+    private final FileHandler fileHandler;
+    private final TerminalHandler terminalHandler;
+
+    public Driver(FileHandler fileHandler, TerminalHandler terminalHandler) {
         this.fileHandler = fileHandler;
+        this.terminalHandler = terminalHandler;
     }
 
     private void display() {
 
-        System.out.println();
-        System.out.println();
+        terminalHandler.printLine();
+        terminalHandler.printLine();
 
         fileHandler.forEachLine((index, line) -> {
-            System.out.println(String.join(": ", String.valueOf(index), line));
+            terminalHandler.printLine(String.join(": ", String.valueOf(index), line));
         });
 
-        System.out.println();
-        System.out.println();
+        terminalHandler.printLine();
+        terminalHandler.printLine();
     }
 
     private Scanner scanner = new Scanner(System.in);
@@ -57,56 +60,56 @@ public class Driver {
                     stop = true;
                     break;
                 default:
-                    System.out.println("Input not supported, please try one of the below.");
+                    terminalHandler.printLine("Input not supported, please try one of the below.");
             }
 
         } while(!stop);
 
-        System.out.println("Application now terminates. You will loose any unsaved changes.");
+        terminalHandler.printLine("Application now terminates. You will loose any unsaved changes.");
     }
 
     private void save() {
         try {
             fileHandler.save();
-            System.out.println("File saved.");
+            terminalHandler.printLine("File saved.");
         } catch (IOException e) {
-            System.out.println("Unable to save the file.");
+            terminalHandler.printLine("Unable to save the file.");
         }
     }
 
     private void delete(Integer lineNumber) {
         try {
             fileHandler.delete(lineNumber);
-            System.out.println("Line deleted.");
+            terminalHandler.printLine("Line deleted.");
         } catch (Exception e) {
-            System.out.println("Unable to locate the line number.");
+            terminalHandler.printLine("Unable to locate the line number.");
         }
     }
 
     private void displayPrompt(){
-        System.out.print(">>");
+        terminalHandler.print(">>");
     }
 
     private void displayChoices(){
-        System.out.println("___________________________________________________________________________________________________________________________________________");
-        System.out.println("Show file: list\t\tdelete a line: del <line number>\tinsert a line: ins <line number>\t To save: save\tTo quit: quit");
-        System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println();
+        terminalHandler.printLine("___________________________________________________________________________________________________________________________________________");
+        terminalHandler.printLine("Show file: list\t\tdelete a line: del <line number>\tinsert a line: ins <line number>\t To save: save\tTo quit: quit");
+        terminalHandler.printLine("-------------------------------------------------------------------------------------------------------------------------------------------");
+        terminalHandler.printLine();
         displayPrompt();
     }
     private void insert(Integer lineNumber) {
         //this if block was added to improve user experience. However, it leads to double handling of the same concern
         if(!fileHandler.isValidLine(lineNumber)) {
-            System.out.println("Unable to locate the line number.");
+            terminalHandler.printLine("Unable to locate the line number.");
             return;
         }
-        System.out.println("Enter the content:");
+        terminalHandler.printLine("Enter the content:");
         displayPrompt();
         try {
             fileHandler.insert(lineNumber,getInput());
-            System.out.println("Line inserted");
+            terminalHandler.printLine("Line inserted");
         } catch (Exception e) {
-            System.out.println("Unable to locate the line number.");
+            terminalHandler.printLine("Unable to locate the line number.");
         }
     }
 }
