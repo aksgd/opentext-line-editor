@@ -10,4 +10,11 @@ public class InputTest extends TestCase {
         assertEquals(input.getFlag(), "ins");
         assertEquals(input.getValueAsInteger(), Integer.valueOf(1));
     }
+
+    public void testDelete() {
+        var input = new Input("del 1");
+        assertEquals(input.getFlag(), "del");
+        assertEquals(input.getValueAsInteger(), Integer.valueOf(1));
+    }
+
 }
