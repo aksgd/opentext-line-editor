@@ -92,7 +92,7 @@ public class Driver {
 
     private void displayChoices(){
         terminalHandler.printLine("___________________________________________________________________________________________________________________________________________");
-        terminalHandler.printLine("Show file: list\t\tdelete a line: del <line number>\tinsert a line: ins <line number>\t To save: save\tTo quit: quit");
+        terminalHandler.printLine("Show file:     list\ndelete a line: del <line number>\ninsert a line: ins <line number>\nTo save:       save\nTo quit:       quit");
         terminalHandler.printLine("-------------------------------------------------------------------------------------------------------------------------------------------");
         terminalHandler.printLine();
         displayPrompt();
